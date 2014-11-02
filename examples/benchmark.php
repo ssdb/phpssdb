@@ -1,5 +1,10 @@
 <?php
 
+spl_autoload_register(function($class){
+   require str_replace('SSDB', '../src/', str_replace('\\', '/', $class)) . '.php';
+   return true;
+});
+
 $host = '127.0.0.1';
 $port = 8888;
 
