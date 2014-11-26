@@ -112,7 +112,7 @@ class SessionHandler implements \SessionHandlerInterface {
 	 */
 	public function write($session_id, $session_data) {
 		if (isset($this->_cache[$session_id]) && $this->_cache[$session_id] === $session_data) {
-			$this->_client->expire($session_id, $this->_ttl);
+			$this->_client->expire($this->_prefix . $session_id, $this->_ttl);
 		}
 		else {
 			$this->_cache[$session_id] = $session_data;
