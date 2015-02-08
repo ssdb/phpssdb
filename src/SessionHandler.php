@@ -12,7 +12,7 @@ class SessionHandler implements \SessionHandlerInterface {
 	 * 
 	 * @var string
 	 */
-	protected $_prefix = 'sess_';
+	protected $_prefix;
 
 	/**
 	 * 
@@ -28,11 +28,10 @@ class SessionHandler implements \SessionHandlerInterface {
 
 	/**
 	 * 
-	 * @param Client $ssdb
-	 * @param int $ttl
+	 * @param string $prefix
 	 */
-	public function __construct($ttl = null, $prefix = 'sess_') {
-		$this->_ttl = $ttl ?: ini_get('session.gc_maxlifetime');
+	public function __construct($prefix = 'sess_') {
+		$this->_ttl = ini_get('session.gc_maxlifetime');
 		$this->_prefix = $prefix;
 	}
 

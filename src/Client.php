@@ -95,7 +95,7 @@ class Client
 			$pass = $this->async_auth_password;
 			$this->async_auth_password = null;
 			$auth = $this->__call('auth', array($pass));
-			if($auth !== true){
+			if($auth->data !== true){
 				throw new \Exception("Authentication failed");
 			}
 		}

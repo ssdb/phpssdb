@@ -36,4 +36,17 @@ var_dump($ssdb->del('test'));
 var_dump($ssdb->get('test'));
 
 ```
+## SessionHandler
 
+Use SSDB\SessionHandler to save session through SSDB.
+
+```php
+<?php
+
+ini_set('session.save_path', 'tcp://127.0.0.1:8888/');
+ini_set('session.gc_maxlifetime', 3600);
+
+$sessionHandler = new SSDB\SessionHandler();
+
+session_set_save_handler($sessionHandler);
+```
